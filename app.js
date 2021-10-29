@@ -24,7 +24,9 @@ app.use(methodOverride('_method'));
 app.use(morgan('dev'));
 app.use(express.static(path.join(__dirname, 'public')));
 
-const dbUrl = process.env.DB_URL;
+const dbUrl =
+  process.env.DB_URL ||
+  'mongodb+srv://qwer:4wHsMecYSwTuawUk@learning.j1yvg.mongodb.net/myFirstDatabase?retryWrites=true&w=majority';
 // const dbURL = 'mongodb://localhost:27017/yelpCamp'
 
 const store = MongoStore.create({

@@ -1,0 +1,103 @@
+<% layout('layouts/boilerplate') -%>
+<div class="container d-flex justify-content-center align-items-center my-2">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 col-xl-6 offset-xl-3">
+      <div class="card shadow">
+        <img
+          src="https://images.unsplash.com/photo-1571863533956-01c88e79957e?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1267&q=80"
+          alt=""
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <h1 class="card-title">New Campground</h1>
+          <form
+            class="row needs-validation"
+            action="/campgrounds"
+            method="POST"
+            enctype="multipart/form-data"
+            novalidate
+          >
+            <div class="mb-3">
+              <label for="title" class="form-label fs-5">Title: </label>
+              <input
+                id="title"
+                type="text"
+                name="campground[title]"
+                class="form-control"
+                placeholder="test"
+                required
+              />
+              <div class="invalid-feedback m-0">
+                Please enter the name of the Campground
+              </div>
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label fs-5">Price: </label>
+              <div class="input-group">
+                <span class="input-group-text">$</span
+                ><input
+                  type="number"
+                  name="campground[price]"
+                  min="0"
+                  id="price"
+                  class="form-control"
+                  placeholder="0.00"
+                  required
+                />
+              </div>
+            </div>
+            <div class="mb-3 col-7 pe-0">
+              <label for="city" class="form-label fs-5">City:</label>
+              <input
+                type="text"
+                name="campground[city]"
+                id="city"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="mb-3 col-5">
+              <label for="state" class="form-label fs-5">State:</label>
+              <input
+                type="text"
+                name="campground[state]"
+                id="state"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label fs-5"
+                >Description:</label
+              >
+              <input
+                type="text"
+                name="campground[description]"
+                id="description"
+                class="form-control"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <div class="mb-3">
+                <label for="image" class="form-label fs-5"
+                  >Upload Images:</label
+                >
+                <input
+                  class="form-control"
+                  type="file"
+                  id="image"
+                  name="image"
+                  multiple
+                />
+              </div>
+            </div>
+            <div class="d-grid">
+              <button class="btn btn-success text-white fs-5">Submit</button>
+            </div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

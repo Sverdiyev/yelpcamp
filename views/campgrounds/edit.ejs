@@ -1,0 +1,117 @@
+<% layout('layouts/boilerplate') -%>
+<div class="container d-flex justify-content-center align-items-center my-2">
+  <div class="row">
+    <div class="col-md-8 offset-md-2 col-xl-6 offset-xl-3">
+      <div class="card shadow">
+        <img
+          src="<%= campground.image[0].url %> "
+          alt=""
+          class="card-img-top"
+        />
+        <div class="card-body">
+          <h1 class="card-title">Edit <%= campground.title %></h1>
+          <h2 class="card-title"><%= campground.location %></h2>
+          <form
+            class="row needs-validation"
+            action="/campgrounds/<%=campground._id %>?_method=PUT"
+            method="POST"
+            novalidate
+            enctype="multipart/form-data"
+          >
+            <div class="mb-3">
+              <label for="title" class="form-label fs-5">Title: </label>
+              <input
+                class="form-control"
+                id="title"
+                type="text"
+                name="campground[title]"
+                placeholder="Enter title"
+                value="<%=  campground.title %>"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="price" class="form-label fs-5">Price: </label>
+              <div class="input-group">
+                <span class="input-group-text">$</span>
+                <input
+                  class="form-control"
+                  type="number"
+                  name="campground[price]"
+                  min="0.00"
+                  id="price"
+                  placeholder="Enter price"
+                  value="<%=  campground.price %>"
+                  required
+                />
+              </div>
+            </div>
+            <div class="mb-3 col-7 pe-0">
+              <label for="city" class="form-label fs-5">City:</label>
+              <input
+                class="form-control"
+                type="text"
+                name="campground[city]"
+                id="city"
+                placeholder="Enter city"
+                value="<%=  campground.city %>"
+                required
+              />
+            </div>
+            <div class="mb-3 col-5">
+              <label for="state" class="form-label fs-5">State:</label>
+              <input
+                class="form-control"
+                type="text"
+                name="campground[state]"
+                id="state"
+                placeholder="Enter State"
+                value="<%=  campground.state %>"
+                required
+              />
+            </div>
+            <div class="mb-3">
+              <label for="image" class="form-label fs-5">Add Image</label>
+              <input type="file" name="image" id="image" multiple />
+            </div>
+            <div class="mb-3">
+              <label for="description" class="form-label fs-5"
+                >Description:</label
+              >
+              <textarea
+                rows="3"
+                placeholder="Enter description"
+                name="campground[description]"
+                id="description"
+                class="form-control"
+                required
+              >
+<%=campground.description%></textarea
+              >
+            </div>
+
+            <div class="mb-3">
+              <% campground.image.forEach((img,i) =>{%>
+              <div class="mb-3">
+                <label for="image-label-<%= i %>">
+                  <img src="<%=img.thumbnail%>" class="img-thumbnail" />
+                </label>
+                <input
+                  type="checkbox"
+                  id="image-label-<%=i%>"
+                  name="deletedImages[]"
+                  value="<%=img.filename%>"
+                />
+                <label for="image-label-<%= i %>">Delete Image</label>
+              </div>
+              <% }) %>
+            </div>
+            <button class="btn btn-success fs-3 col-4 offset-4 text-white">
+              Submit
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

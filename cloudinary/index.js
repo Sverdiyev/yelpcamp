@@ -7,8 +7,7 @@ cloudinary.config({
   api_secret: process.env.CLOUD_SECRET,
 });
 
-const storage = new CloudinaryStorage({
-  cloudinary,
+const storage = new CloudinaryStorage({cloudinary,
   params: { folder: 'YelpCamp', allowedFormats: ['jpeg', 'jpg', 'png'] },
 });
 
